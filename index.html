@@ -14,6 +14,7 @@
     </script>
 
     <style>
+        /* --- ESTILOS GENERALES ---- */
         :root {
             --bg-page:  #f0f2f5;
             --glass-bg: rgba(255, 255, 255, 0.35);
@@ -21,8 +22,8 @@
             --blur: blur(15px);
             --shadow-light: rgba(255, 255, 255, 0.9);
             --text-main: #556070;
-            --accent: #4a90e2;
-            --sidebar-full: 280px;
+            --accent: #0099ff;
+            --sidebar-full: 256px;
             --sidebar-mini: 70px;
 
         }
@@ -45,6 +46,9 @@
             overflow: hidden;
         }
 
+        h1, h2{
+            margin-bottom: 15px;
+        }
         .card-hybrid {
             background: var(--glass-bg);
             backdrop-filter: var(--blur);
@@ -54,6 +58,7 @@
             box-shadow: 10px 10px 20px var(--shadow-dark), -8px -8px 15px var(--shadow-light);
         }
 
+        /* --- TOP BAR --- */
         .topbar {
             width: 100%;
             height: 70px;
@@ -64,7 +69,66 @@
             flex-shrink: 0; 
         }
 
-        /* Contenedor inferior (Sidebar + Contenido) */
+        .content-topbar{
+            display: flex; 
+            gap: 15px; 
+            align-items: center;
+        }
+
+         .btn-menu {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            border-radius: 10px;
+            transition: 0.2s;
+        }
+        
+        .btn-menu:hover { 
+            background: rgba(255, 255, 255, 0.2); 
+        }
+
+        .topbar-titulo{
+            font-weight: bold; 
+            font-size: 1.2rem; 
+            display: flex; 
+            align-items: center; 
+            gap: 8px;
+
+        }
+
+        .search-box {
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: inset 3px 3px 6px var(--shadow-dark), inset -3px -3px 6px var(--shadow-light);
+            padding: 8px 15px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            width: 300px;
+        }
+        
+        .search-box input {
+            background: transparent;
+            border: none; outline: none;
+            margin-left: 10px; color: var(--text-main);
+            width: 100%;
+        }
+
+        .topbar-usuario{
+            display: flex; 
+            gap: 15px; 
+            align-items: center;
+        }
+
+        .circle-user{
+            width: 40px; 
+            height: 40px; 
+            margin: 0;
+        }
+
+        /* ---- CONTENIDO (SIDEBAR + CONTENIDO PRICIPAL) --- */
         .main-wrapper {
             display: flex;
             flex: 1;
@@ -72,7 +136,6 @@
             overflow: hidden;
         }
 
-        /* SIDEBAR */
         .sidebar {
             width: var(--sidebar-mini);
             display: flex;
@@ -84,13 +147,13 @@
         }
      
         .sidebar.mini{
-            width: 256px;
+            width: var(--sidebar-full)
         }
 
         .sidebar.mini .nav-item {
-        justify-content: flex-start; 
-        padding-left: 18px; 
-        gap: 15px; 
+            justify-content: flex-start; 
+            padding-left: 18px; 
+            gap: 15px; 
         }
 
         .sidebar:not(.mini) .nav-item span{
@@ -99,7 +162,6 @@
 
         .sidebar:not(.mini) .nav-item{
             padding: 12px 0;
-           
         }
 
         nav {
@@ -115,7 +177,7 @@
             justify-content: center; 
             width: 100%; 
             padding: 12px;
-            border-radius: 15px;
+            border-radius: 12px;
             text-decoration: none;
             color: var(--text-main);
             transition: 0.3s ease;
@@ -129,23 +191,13 @@
             
         }
 
-        /* BOTÓN TOGGLE */
-        .toggle-btn {
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            color: var(--text-main);
-            display: flex;
-            align-items: center;
-            border-radius: 10px;
-            transition: 0.2s;
+        .sidebar-footer{
+            margin-top: auto;
+            border-top: 1px solid var(--glass-border);
         }
         
-        .toggle-btn:hover { 
-            background: rgba(255, 255, 255, 0.2); 
-        }
+       
 
-        /* CONTENIDO PRINCIPAL */
         .content-area {
             flex: 1;
             display: flex;
@@ -154,62 +206,102 @@
             overflow-y: auto;
         }
 
-        .search-box {
-            background: rgba(255, 255, 255, 0.2);
-            box-shadow: inset 3px 3px 6px var(--shadow-dark), inset -3px -3px 6px var(--shadow-light);
-            padding: 8px 15px;
-            border-radius: 50px;
-            display: flex;
-            align-items: center;
-            width: 300px;
+        
+        .dashboard-grid { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr 1fr 1fr; gap: 20px; 
         }
-        .search-box input {
-            background: transparent;
-            border: none; outline: none;
-            margin-left: 10px; color: var(--text-main);
-            width: 100%;
+        
+        .main-card { 
+            padding: 30px; 
         }
-
-        .dashboard-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; }
-        .main-card { padding: 30px; }
-        .stat-card { padding: 25px; text-align: center; }
+        .stat-card { 
+            padding: 25px; 
+            text-align: center; 
+        }
 
         .circle-stat {
-            width: 80px; height: 80px; border-radius: 50%;
-            display: inline-flex; align-items: center; justify-content: center;
+            width: 80px; height: 80px; 
+            border-radius: 50%;
+            display: inline-flex; 
+            align-items: center; 
+            justify-content: center;
             box-shadow: inset 5px 5px 10px var(--shadow-dark), inset -5px -5px 10px var(--shadow-light);
             margin-bottom: 10px;
         }
 
+        @media (max-width: 900px) {
+            .dashboard-grid{
+                grid-template-columns: 1fr;
+            } 
+             .search-box {
+                width: 150px;
+            }   
+        }
+
+        @media (max-width:768px){
+            .sidebar{
+                position: fixed;
+                left: -300px;
+                top: 100px;
+                bottom: 20px;
+                z-index: 999;
+                width: 250px !important;
+                transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);;
+            }
+
+            .sidebar.active{
+                left: 20px;
+            }
+
+            .main-wrapper{
+                gap: 0;
+            }
+
+            .dashboard-grid{
+                grid-template-columns: 1fr;
+            }
+        }
+        @media(max-width:600px){
+            body{
+                padding: 10px;
+                gap: 10px;
+            }
+
+            .topbar{
+                padding: 0 15px;
+            }
+
+            .topbar span{
+                display: none;
+            }
+        }
     </style>
 </head>
 <body>
-
-    <!-- TOPBAR SUPERIOR (Ocupa todo el ancho) -->
+    <!-- CONTENEDOR TOPBAR -->
     <header class="topbar card-hybrid">
-        <div style="display: flex; gap: 15px; align-items: center;">
-            <button class="toggle-btn" onclick="toggleSidebar()">
+        <div class="content-topbar">
+            <button class="btn-menu" onclick="toggleSidebar()">
                 <i data-lucide="menu"></i>
             </button>
-            <div style="font-weight: bold; font-size: 1.2rem; display: flex; align-items: center; gap: 8px;">
-                <i data-lucide="droplet" size="20"></i> PureAdmin
-            </div>
+            <div class="topbar-titulo">IT Support</div>
         </div>
 
         <div class="search-box">
-            <i data-lucide="search" size="16"></i>
+            <i data-lucide="search"></i>
             <input type="text" placeholder="Buscar algo...">
         </div>
 
-        <div style="display: flex; gap: 15px; align-items: center;">
+        <div class="topbar-usuario">
             <span>Usuario Pro</span>
-            <div class="circle-stat" style="width: 40px; height: 40px; margin: 0;">
-                <i data-lucide="user" size="18"></i>
+            <div class="circle-user">
+                <i data-lucide="user"></i>
             </div>
         </div>
     </header>
 
-    <!-- CONTENEDOR DE CUERPO (Sidebar + Contenido) -->
+    <!-- (Sidebar + Contenido) -->
     <div class="main-wrapper">
         
         <!-- SIDEBAR -->
@@ -221,13 +313,19 @@
                 <a href="#" class="nav-item"><i data-lucide="bell"></i><span>Notificaciones</span></a>
                 <a href="#" class="nav-item"><i data-lucide="settings"></i> <span>Ajustes</span></a>
             </nav>
+            <div class="sidebar-footer">
+                <a class="nav-item logout-link" onclick="handleLogout()">
+                    <i data-lucide="power"></i>
+                    <span>Cerrar Sesión</span>
+                </a>
+            </div>
         </aside>
 
-        <!-- ÁREA DE CONTENIDO -->
+        <!-- ÁREA DE CONTENIDO CENTRAL -->
         <main class="content-area">
             <div class="dashboard-grid">
                 <section class="main-card card-hybrid">
-                    <h1 style="margin-bottom: 15px;">Topbar Global</h1>
+                    <h1>Topbar Global</h1>
                     <p>Ahora el <strong>Header</strong> está fuera del flujo del sidebar, ocupando el 100% del ancho superior. Esto da una sensación de aplicación profesional más estructurada.</p>
                 </section>
 
@@ -237,6 +335,20 @@
                     </div>
                     <h3>Estado</h3>
                     <p style="color: #2ecc71; font-weight: bold;">En línea</p>
+                </section>
+                <section class="stat-card card-hybrid">
+                    <div class="circle-stat">
+                        <i data-lucide="activity" color="#4a90e2"></i>
+                    </div>
+                    <h3>Estado</h3>
+                    <p style="color: #f60101; font-weight: bold;">En línea</p>
+                </section>
+                <section class="stat-card card-hybrid">
+                    <div class="circle-stat">
+                        <i data-lucide="activity" color="#4a90e2"></i>
+                    </div>
+                    <h3>Estado</h3>
+                    <p style="color: #0008ff; font-weight: bold;">En línea</p>
                 </section>
             </div>
             
@@ -252,8 +364,14 @@
 
         function toggleSidebar() {
             const sidebar = document.getElementById('sidebar');
-            sidebar.classList.toggle('mini');
+            
+            if(window.innerWidth <= 768){
+                sidebar.classList.toggle('active');
+            }else{
+                sidebar.classList.toggle('mini');
+            }
         }
+
     </script>
 </body>
 </html>
