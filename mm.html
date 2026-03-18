@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>White Glassmorphism Puro</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        // Esta función espera a que TODO el HTML esté cargado
+        document.addEventListener("DOMContentLoaded", function() {
+            lucide.createIcons();
+        });
+    </script>
+    <style>
+        :root {
+            /* Fondo: Mezcla de blanco con toques de azul y rosa pastel */
+            --bg-main: linear-gradient(135deg, #ffffff 0%, #f0f4f8 50%, #fdf2f8 100%);
+            
+            /* El Blanco "Frosted" */
+            --glass-white: rgba(255, 255, 255, 0.7); /* Más opaco para resaltar sobre el fondo blanco */
+            --glass-border: rgba(255, 255, 255, 0.8);
+            --blur: blur(20px);
+            
+            /* Sombra sutil y etérea */
+            --soft-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
+            --text-color: #334155;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: var(--bg-main);
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            color: var(--text-color);
+            height: 100vh;
+            display: flex;
+            padding: 25px;
+            gap: 25px;
+        }
+
+        /* PANEL DE CRISTAL BLANCO */
+        .glass-panel {
+            background: var(--glass-white);
+            backdrop-filter: var(--blur);
+            -webkit-backdrop-filter: var(--blur);
+            border: 1.5px solid var(--glass-border);
+            border-radius: 32px;
+            box-shadow: var(--soft-shadow);
+            transition: transform 0.3s ease;
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            width: 280px;
+            display: flex;
+            flex-direction: column;
+            padding: 40px 20px;
+        }
+
+        .nav-item {
+            padding: 16px 20px;
+            margin-bottom: 8px;
+            border-radius: 20px;
+            text-decoration: none;
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+
+        .nav-item:hover {
+            background: rgba(255, 255, 255, 0.5);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            transform: translateX(5px);
+        }
+
+        .nav-item i { margin-right: 15px; color: #94a3b8; }
+
+        /* CONTENIDO */
+        .main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .topbar {
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 35px;
+        }
+
+        .search-container {
+            background: rgba(255, 255, 255, 0.5);
+            padding: 10px 20px;
+            border-radius: 50px;
+            border: 1px solid white;
+            display: flex;
+            align-items: center;
+        }
+
+        input {
+            background: transparent;
+            border: none;
+            outline: none;
+            margin-left: 10px;
+            color: var(--text-color);
+        }
+
+        /* CARD PRINCIPAL */
+        .hero {
+            flex: 1;
+            padding: 60px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* Elemento decorativo detrás del cristal para notar el blur */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            right: -10%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(147, 197, 253, 0.3) 0%, transparent 70%);
+            z-index: -1;
+        }
+
+        h1 { font-size: 3.5rem; font-weight: 700; color: #1e293b; margin-bottom: 15px; }
+        p { font-size: 1.2rem; color: #64748b; max-width: 500px; line-height: 1.6; }
+
+        .btn-white {
+            background: white;
+            border: none;
+            padding: 15px 35px;
+            border-radius: 15px;
+            font-weight: 600;
+            color: #1e293b;
+            margin-top: 30px;
+            width: fit-content;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: 0.3s;
+        }
+
+        .btn-white:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <aside class="sidebar glass-panel">
+        <div style="font-size: 1.4rem; font-weight: 800; margin-bottom: 40px; padding-left: 20px;">
+            STUDIO <span style="font-weight: 300; color: #94a3b8;">W</span>
+        </div>
+        <nav>
+            <a href="#" class="nav-item"><i data-lucide="layout-grid"></i> Vista General</a>
+            <a href="#" class="nav-item"><i data-lucide="folder"></i> Proyectos</a>
+            <a href="#" class="nav-item"><i data-lucide="users"></i> Clientes</a>
+            <a href="#" class="nav-item"><i data-lucide="calendar"></i> Agenda</a>
+        </nav>
+    </aside>
+
+    <div class="main">
+        <header class="topbar glass-panel">
+            <div class="search-container">
+                <i data-lucide="search" size="18" color="#94a3b8"></i>
+                <input type="text" placeholder="Buscar inspiración...">
+            </div>
+            <div style="display: flex; gap: 20px; align-items: center;">
+                <i data-lucide="bell" color="#94a3b8"></i>
+                <div style="width: 45px; height: 45px; border-radius: 15px; background: white; border: 1px solid #f1f5f9;"></div>
+            </div>
+        </header>
+
+        <main class="hero glass-panel">
+            <h1>Pureza Estética</h1>
+            <p>Hemos fusionado la transparencia del cristal con una base blanca pura para crear una interfaz que transmite paz, orden y lujo tecnológico.</p>
+            <button class="btn-white">Comenzar Proyecto</button>
+        </main>
+    </div>
+
+    <script>lucide.createIcons();</script>
+</body>
+</html>

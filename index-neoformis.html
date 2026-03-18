@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Neomorfismo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com"></script>
+    <style>
+        :root {
+            --bg-color: #e0e5ec;
+            --shadow-light: #ffffff;
+            --shadow-dark: #a3b1c6;
+        }
+        body { background-color: var(--bg-color); color: #444; }
+
+        /* Efecto de Relieve (Extruido) */
+        .neu-flat {
+            background: var(--bg-color);
+            box-shadow: 9px 9px 16px var(--shadow-dark), 
+                        -9px -9px 16px var(--shadow-light);
+        }
+
+        /* Efecto de Hundido (Pressed) */
+        .neu-pressed {
+            background: var(--bg-color);
+            box-shadow: inset 6px 6px 12px var(--shadow-dark), 
+                        inset -6px -6px 12px var(--shadow-light);
+        }
+
+        /* Botones con interacción */
+        .neu-button {
+            transition: all 0.2s ease;
+        }
+        .neu-button:active {
+            box-shadow: inset 4px 4px 8px var(--shadow-dark), 
+                        inset -4px -4px 8px var(--shadow-light);
+        }
+    </style>
+</head>
+<body class="flex h-screen p-6 gap-6">
+
+    <!-- SIDEBAR NEOMÓRFICO -->
+    <aside class="neu-flat w-64 rounded-[2rem] flex flex-col p-6">
+        <div class="mb-10 px-4 text-xl font-bold tracking-widest text-gray-500 uppercase">Proyect</div>
+        <nav class="space-y-6">
+            <a href="#" class="neu-button flex items-center p-4 rounded-2xl text-blue-500 neu-pressed">
+                <i data-lucide="layout-grid" class="mr-3"></i> Inicio
+            </a>
+            <a href="#" class="neu-button flex items-center p-4 rounded-2xl text-gray-500">
+                <i data-lucide="user" class="mr-3"></i> Perfil
+            </a>
+            <a href="#" class="neu-button flex items-center p-4 rounded-2xl text-gray-500">
+                <i data-lucide="message-square" class="mr-3"></i> Chat
+            </a>
+            <a href="#" class="neu-button flex items-center p-4 rounded-2xl text-gray-500">
+                <i data-lucide="bell" class="mr-3"></i> Avisos
+            </a>
+        </nav>
+    </aside>
+
+    <!-- ÁREA PRINCIPAL -->
+    <main class="flex-1 flex flex-col gap-6">
+        
+        <!-- TOPBAR -->
+        <header class="neu-flat h-20 rounded-3xl flex items-center justify-between px-8">
+            <div class="flex items-center bg-[#e0e5ec] px-4 py-2 rounded-xl neu-pressed">
+                <i data-lucide="search" class="w-4 h-4 text-gray-400 mr-2"></i>
+                <input type="text" placeholder="Buscar..." class="bg-transparent outline-none text-sm">
+            </div>
+            <div class="flex gap-4">
+                <button class="neu-flat w-10 h-10 rounded-full flex items-center justify-center neu-button">
+                    <i data-lucide="moon" class="w-5 h-5"></i>
+                </button>
+                <button class="neu-flat w-10 h-10 rounded-full flex items-center justify-center neu-button">
+                    <i data-lucide="log-out" class="w-5 h-5 text-red-400"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- CONTENIDO -->
+        <div class="flex-1 grid grid-cols-2 gap-8 p-4 overflow-y-auto">
+            <!-- Card 1 -->
+            <div class="neu-flat p-10 rounded-[3rem] flex flex-col items-center justify-center text-center">
+                <div class="neu-pressed w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                    <i data-lucide="layers" class="text-blue-500"></i>
+                </div>
+                <h3 class="text-lg font-bold mb-2">Relieve Suave</h3>
+                <p class="text-gray-500 text-sm">Los elementos nacen del fondo mediante sombras paralelas.</p>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="neu-flat p-10 rounded-[3rem] flex flex-col items-center justify-center text-center">
+                <div class="neu-pressed w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                    <i data-lucide="mouse-pointer-2" class="text-purple-500"></i>
+                </div>
+                <h3 class="text-lg font-bold mb-2">Interactividad</h3>
+                <p class="text-gray-500 text-sm">Al hacer clic, el relieve se invierte creando el efecto de pulsado.</p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

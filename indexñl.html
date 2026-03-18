@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glassmorphism Puro</title>
+    <script src="https://unpkg.com"></script>
+    <style>
+        :root {
+            /* Colores para el fondo vibrante */
+            --bg-gradient: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --glass-shadow: rgba(0, 0, 0, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            /* Fondo colorido para que el cristal resalte */
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            font-family: 'Segoe UI', sans-serif;
+            height: 100vh;
+            display: flex;
+            padding: 20px;
+            gap: 20px;
+            color: white;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* CLASE MAESTRA DE CRISTAL */
+        .glass {
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            box-shadow: 0 8px 32px 0 var(--glass-shadow);
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            width: 280px;
+            display: flex;
+            flex-direction: column;
+            padding: 40px 20px;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            margin-bottom: 10px;
+            border-radius: 15px;
+            text-decoration: none;
+            color: white;
+            transition: 0.3s;
+            background: rgba(255, 255, 255, 0);
+        }
+
+        .nav-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* MAIN CONTENT */
+        .main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .topbar {
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 30px;
+        }
+
+        .hero-card {
+            flex: 1;
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .glass-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            padding: 12px 30px;
+            border-radius: 12px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            width: fit-content;
+            transition: 0.3s;
+            margin-top: 20px;
+        }
+
+        .glass-btn:hover { background: rgba(255, 255, 255, 0.4); }
+
+        h1 { font-size: 3rem; margin-bottom: 10px; text-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        p { font-size: 1.1rem; opacity: 0.9; }
+
+    </style>
+</head>
+<body>
+
+    <aside class="sidebar glass">
+        <h2 style="margin-bottom: 40px; padding-left: 20px;">GlassOS</h2>
+        <nav>
+            <a href="#" class="nav-item"><i data-lucide="layout" style="margin-right: 15px"></i> Dashboard</a>
+            <a href="#" class="nav-item"><i data-lucide="image" style="margin-right: 15px"></i> Galería</a>
+            <a href="#" class="nav-item"><i data-lucide="mail" style="margin-right: 15px"></i> Mensajes</a>
+            <a href="#" class="nav-item"><i data-lucide="settings" style="margin-right: 15px"></i> Ajustes</a>
+        </nav>
+    </aside>
+
+    <div class="main">
+        <header class="topbar glass">
+            <span>Explorador de Cristal</span>
+            <div style="display: flex; gap: 15px;">
+                <div class="glass" style="width: 35px; height: 35px; border-radius: 50%;"></div>
+            </div>
+        </header>
+
+        <section class="hero-card glass">
+            <h1>Transparencia Pura</h1>
+            <p>El Glassmorphism se basa en la superposición de capas translúcidas. <br>Nota cómo el fondo animado se distorsiona suavemente a través de este panel.</p>
+            <button class="glass-btn">Empezar ahora</button>
+        </section>
+    </div>
+
+    <script>lucide.createIcons();</script>
+</body>
+</html>

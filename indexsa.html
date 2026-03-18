@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimalismo Cálido Híbrido</title>
+    <script src="https://unpkg.com"></script>
+    <style>
+        :root {
+            /* 1. Base Minimalista Cálida */
+            --bg-warm: #f7f3ee; /* Hueso/Lino */
+            --text-soft: #5c554e;
+            --accent-wood: #a68966;
+            
+            /* 2. Glassmorphism */
+            --glass-white: rgba(255, 255, 255, 0.4);
+            --blur-effect: blur(12px);
+            
+            /* 3. Neumorfismo (Sombras suaves) */
+            --neu-shadow-dark: rgba(190, 180, 170, 0.5);
+            --neu-shadow-light: rgba(255, 255, 255, 0.9);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-warm);
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            color: var(--text-soft);
+            display: flex;
+            height: 100vh;
+            padding: 30px;
+            gap: 30px;
+            letter-spacing: -0.01em;
+        }
+
+        /* SIDEBAR: Minimalista + Glass + Neu */
+        .sidebar {
+            width: 260px;
+            background: var(--glass-white);
+            backdrop-filter: var(--blur-effect);
+            border-radius: 40px; /* Orgánico */
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 15px 15px 30px var(--neu-shadow-dark), 
+                        -15px -15px 30px var(--neu-shadow-light);
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo {
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: var(--accent-wood);
+            margin-bottom: 50px;
+            text-align: center;
+            letter-spacing: 2px;
+        }
+
+        .nav-link {
+            padding: 18px 25px;
+            margin-bottom: 12px;
+            border-radius: 25px;
+            text-decoration: none;
+            color: var(--text-soft);
+            display: flex;
+            align-items: center;
+            transition: all 0.4s ease;
+        }
+
+        /* Efecto Neumórfico Hundido al pasar el mouse */
+        .nav-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: inset 6px 6px 12px var(--neu-shadow-dark), 
+                        inset -6px -6px 12px var(--neu-shadow-light);
+            transform: scale(0.98);
+        }
+
+        /* MAIN CONTENT */
+        .content { flex: 1; display: flex; flex-direction: column; gap: 30px; }
+
+        /* TOPBAR */
+        .topbar {
+            height: 80px;
+            background: var(--glass-white);
+            backdrop-filter: var(--blur-effect);
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 10px 10px 20px var(--neu-shadow-dark);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+        }
+
+        /* CARD PRINCIPAL (Formas Orgánicas) */
+        .main-card {
+            flex: 1;
+            background: var(--glass-white);
+            backdrop-filter: var(--blur-effect);
+            border-radius: 50px;
+            padding: 60px;
+            box-shadow: 20px 20px 40px var(--neu-shadow-dark), 
+                        -20px -20px 40px var(--neu-shadow-light);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 300; /* Minimalismo */
+            color: var(--text-soft);
+            margin-bottom: 20px;
+        }
+
+        .tag {
+            display: inline-block;
+            background: var(--accent-wood);
+            color: white;
+            padding: 6px 15px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        p {
+            line-height: 1.8;
+            max-width: 600px;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="logo">ESSENCE</div>
+        <nav>
+            <a href="#" class="nav-link"><i data-lucide="leaf" style="margin-right: 15px"></i> Natural</a>
+            <a href="#" class="nav-link"><i data-lucide="wind" style="margin-right: 15px"></i> Espacio</a>
+            <a href="#" class="nav-link"><i data-lucide="layers" style="margin-right: 15px"></i> Capas</a>
+        </nav>
+    </aside>
+
+    <div class="content">
+        <header class="topbar">
+            <span>Explorar Tendencias</span>
+            <div style="display: flex; gap: 20px; align-items: center;">
+                <i data-lucide="search"></i>
+                <div style="width: 45px; height: 45px; border-radius: 50%; background: #fff; box-shadow: inset 2px 2px 5px var(--neu-shadow-dark);"></div>
+            </div>
+        </header>
+
+        <main class="main-card">
+            <span class="tag">Warm Minimal Hybrid</span>
+            <h1>La calma visual.</h1>
+            <p>
+                Este diseño utiliza la calidez del <strong>minimalismo</strong> (tonos crema), la profundidad del <strong>neumorfismo</strong> (sombras suaves) y la ligereza del <strong>glassmorphism</strong> (transparencias). 
+                <br><br>
+                El resultado es una interfaz táctil que no cansa la vista y se siente acogedora.
+            </p>
+        </main>
+    </div>
+
+    <script>lucide.createIcons();</script>
+</body>
+</html>

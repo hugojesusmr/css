@@ -1,0 +1,148 @@
+/* --- 1. Variables y Base --- */
+:root {
+    --bg-color: #f0f4f8;
+    --card-bg: rgba(255,255,255,0.7);
+    --border-color: rgba(255,255,255,0.8);
+    --text-main: #1e293b;
+    --text-sub: #64748b;
+    --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    background-image: 
+    radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.1)0, transparent 40%),
+    radial-gradient(at 100% 100%, rgba(168, 85, 247, 0.1)0, transparent 40%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-main);
+}
+
+/* --- 2. Grid Container --- */
+.bento-container{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
+    gap: 20px;
+    max-width: 1100px;
+    width: 95%;
+    padding: 20px;
+}
+
+/* --- 3. Cards Glassmorphism */
+.glass-card{
+   background: var(--card-bg);
+   backdrop-filter: blur(12px);
+   --webkit-backdrop-filter: blur(12px);
+   border: 1px solid var(--border-color);
+   border-radius: 20px;
+   padding: 25px;
+   box-shadow: var(--shadow);
+   transition: transform 0.3s ease, box-shadow 0.3s ease; 
+}
+
+.glass-card:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.1);
+}
+
+/* --- 4. Tamaños Especificos --- */
+.card-main{
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.card-stats{
+    grid-column: span 1;
+    grid-row: span 2;
+}
+
+.card-vertical{
+    grid-row: span 3;
+}
+
+.card-wide{
+    grid-column: span 2;
+}
+
+/* --- 5. Estilos de Contenido --- */
+h2 {
+    font-size: 1.8rem;
+    margin: 15px 0;
+}
+
+h3 {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+
+p{
+    color: var(--text-sub);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+.big-number{
+    font-size: 2.5rem;
+    font-weight: 800;
+    display: block;
+    margin: 10px 0;
+    color: #7c3aed;
+}
+
+.agenda-list{
+    list-style: none;
+    margin-top: 15px;
+}
+
+.agenda-list li{
+    margin-bottom: 12px;
+    font-size: 0.9rem;
+}
+
+.agenda-list span{
+    font-weight: bold;
+    color: var(--text-sub);
+    margin-right: 8px;
+}
+
+/* Iconos */
+
+i{
+    width: 32px;
+    height: 32px;
+    margin-bottom: 10px;
+}
+
+.icon-blue{
+    color: #3b82f6;
+}
+
+.icon-purple{
+    color: #8b5cf6;
+}
+
+.icon-orange{
+    color: #f59e0b;
+}
+.icon-red{
+    color: #ef4444;
+}
+
+/* Responsivo para móviles */
+
+@media (max-width: 850px){
+    .bento-container, .card-main, .card-stats, .card-vertical, .card-wide{
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+
+}

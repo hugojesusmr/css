@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>White Hybrid Login</title>
+     <!-- Carga la librería primero -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        // Esta función espera a que TODO el HTML esté cargado
+        document.addEventListener("DOMContentLoaded", function() {
+            lucide.createIcons();
+        });
+    </script>
+    <style>
+        :root {
+            /* Base Minimalista Cálida */
+            --bg-color: #f0f2f5;
+            --glass-bg: rgba(255, 255, 255, 0.4);
+            
+            /* Sombras Neumórficas Claras */
+            --neu-shadow-dark: rgba(163, 177, 198, 0.4);
+            --neu-shadow-light: rgba(255, 255, 255, 0.9);
+            
+            --accent: #3b82f6; /* Azul suave */
+            --text: #475569;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-color);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+        }
+
+        /* Luces de fondo pastel para resaltar el Glassmorphism */
+        .ambient-glow {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, transparent 70%);
+            z-index: -1;
+            filter: blur(40px);
+        }
+
+        /* CONTENEDOR HÍBRIDO BLANCO */
+        .login-card {
+            width: 380px;
+            padding: 50px 40px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            
+            /* Fusión: Borde Glass + Sombras Neu */
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 45px;
+            box-shadow: 20px 20px 60px var(--neu-shadow-dark), 
+                        -20px -20px 60px var(--neu-shadow-light);
+            
+            text-align: center;
+        }
+
+        h2 { color: var(--text); font-size: 1.8rem; margin-bottom: 30px; font-weight: 700; letter-spacing: -0.5px; }
+
+        /* INPUTS HUNDIDOS (Soft Inset) */
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 16px 25px;
+            background: var(--bg-color);
+            border: none;
+            border-radius: 20px;
+            color: var(--text);
+            outline: none;
+            font-size: 0.95rem;
+            
+            /* Efecto "pressed" neumórfico suave */
+            box-shadow: inset 6px 6px 12px var(--neu-shadow-dark), 
+                        inset -6px -6px 12px var(--neu-shadow-light);
+            transition: 0.3s;
+        }
+
+        input:focus {
+            box-shadow: inset 2px 2px 5px var(--neu-shadow-dark), 
+                        inset -2px -2px 5px var(--neu-shadow-light);
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        /* BOTÓN ELEVADO (Soft Elevated) */
+        .btn-submit {
+            width: 100%;
+            padding: 16px;
+            margin-top: 15px;
+            background: var(--bg-color);
+            border: none;
+            border-radius: 20px;
+            color: var(--accent);
+            font-weight: 700;
+            cursor: pointer;
+            
+            /* Neumorfismo Elevado */
+            box-shadow: 8px 8px 16px var(--neu-shadow-dark), 
+                        -8px -8px 16px var(--neu-shadow-light);
+            transition: all 0.2s ease;
+        }
+
+        .btn-submit:active {
+            box-shadow: inset 4px 4px 8px var(--neu-shadow-dark), 
+                        inset -4px -4px 8px var(--neu-shadow-light);
+            transform: scale(0.98);
+        }
+
+        .footer {
+            margin-top: 35px;
+            font-size: 0.85rem;
+            color: #94a3b8;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="ambient-glow"></div>
+
+    <div class="login-card">
+        <!-- Icono con relieve -->
+        <div style="margin-bottom: 25px; display: inline-block; padding: 18px; border-radius: 22px; background: var(--bg-color); box-shadow: 5px 5px 10px var(--neu-shadow-dark), -5px -5px 10px var(--neu-shadow-light);">
+            <i data-lucide="user-check" color="#3b82f6" size="28"></i>
+        </div>
+        
+        <h2>Acceso Premium</h2>
+        
+        <form>
+            <div class="input-group">
+                <input type="text" placeholder="Usuario">
+            </div>
+            <div class="input-group">
+                <input type="password" placeholder="Contraseña">
+            </div>
+            <button type="button" class="btn-submit">CONTINUAR</button>
+        </form>
+
+        <p class="footer">¿No tienes cuenta? <span style="color: var(--accent); cursor: pointer;">Regístrate</span></p>
+    </div>
+
+</body>
+</html>

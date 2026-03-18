@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Carga la librería primero -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        // Esta función espera a que TODO el HTML esté cargado
+        document.addEventListener("DOMContentLoaded", function() {
+            lucide.createIcons();
+        });
+    </script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="bento-container">
+        <!-- 1. Tarjeta Principal -->
+        <div class="glass-card card-main">
+            <i data-lucide="layout-dashboard" class="icon-blue"></i>
+            <h2>Panel de Control</h2>
+            <p>Bienvenido de nuevo. Aquí tienes el resumen de tus proyectos y tareas pendientes para hoy.</p>
+            <div class="status-badge">En línea</div>
+        </div>
+        
+        <!-- 2. Tarjeta de Estadisticas -->
+        <div class="glass-card card-stats">
+            <i data-lucide="bar-chart-3" class="icon-purple"></i>
+            <h3>Rendimiento</h3>
+            <span class="big-number">+24%</span>
+            <p>Incremento Semanal</p>
+        </div> 
+
+        <!-- 3. Tarjeta de Clima  -->
+         <div class="glass-card card-small">
+            <i data-lucide="cloud-sun" class="icon-orange"></i>
+            <h3>22°C</h3>
+            <p>CDMX</p>
+         </div>
+
+        <!-- 4. Tarjeta de Calendario (Vertical) -->
+        <div class="glass-card card-vertical">
+            <i data-lucide="calendar" class="icon-red"></i>
+            <h3>Agenda</h3>
+            <ul class="agenda-list">
+                <li><span>10:00</span> Daily Scrum</li>
+                <li><span>13:00</span> Diseño UI</li>
+                <li><span>16:00</span> Feedback</li>
+            </ul>
+        </div>
+          <!-- 5. Tarjeta de Ajustes (Pequeña) -->
+        <div class="glass-card card-small">
+            <i data-lucide="settings" class="icon-gray"></i>
+            <h3>Ajustes</h3>
+        </div>
+
+        <!-- 6. Tarjeta de Notificaciones (Larga) -->
+        <div class="glass-card card-wide">
+            <i data-lucide="bell" class="icon-yellow"></i>
+            <p><strong>Nueva actualización:</strong> El sistema se reiniciará a las 02:00 AM.</p>
+        </div>
+    </div>
+    <script>
+      // Inicializar iconos
+      lucide.createIcons();
+    </script>
+</body>
+</html>

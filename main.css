@@ -1,0 +1,61 @@
+/* --- 1. Variables y Base --- */
+:root {
+    --bg-color: #f0f4f8;
+    --card-bg: rgba(255, 255, 255, 0.7);
+    --border-color: rgba(255, 255, 255, 0.8);
+    --text-main: #1e293b;
+    --text-sub: #64748b;
+    --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.body{
+    padding: 20px;
+}
+
+.container {
+    display: grid;
+    grid-template-areas: 
+        "head head"
+        "menu main"
+        "foot foot";
+
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 80px 200px 60px;
+    gap: 10px;
+    
+    
+}
+.item-1 {
+        grid-area: head;
+        background: blue;
+    }
+.item-2 {
+    grid-area: menu;
+    background: red;
+}
+.item-3{
+    grid-area: main;
+    background: rgb(221, 172, 10);
+}
+
+.item-4{
+    grid-area: foot;
+    background: green;
+}
+
+.item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+}
+
+
+

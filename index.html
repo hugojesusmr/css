@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full Width Topbar - Glass/Neu</title>
+      <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        // Esta función espera a que TODO el HTML esté cargado
+        document.addEventListener("DOMContentLoaded", function() {
+            lucide.createIcons();
+        });
+    </script>
+
+    <style>
+        :root {
+            --bg-page:  #f0f2f5;
+            --glass-bg: rgba(255, 255, 255, 0.35);
+            --glass-border: rgba(255, 255, 255, 0.5);
+            --blur: blur(15px);
+            --shadow-light: rgba(255, 255, 255, 0.9);
+            --text-main: #556070;
+            --accent: #4a90e2;
+            --sidebar-full: 280px;
+            --sidebar-mini: 70px;
+
+        }
+
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg-page);
+            color: var(--text-main);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            gap: 20px;
+            overflow: hidden;
+        }
+
+        .card-hybrid {
+            background: var(--glass-bg);
+            backdrop-filter: var(--blur);
+            -webkit-backdrop-filter: var(--blur);
+            border: 1px solid var(--glass-border);
+            border-radius: 25px;
+            box-shadow: 10px 10px 20px var(--shadow-dark), -8px -8px 15px var(--shadow-light);
+        }
+
+        .topbar {
+            width: 100%;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 25px;
+            flex-shrink: 0; 
+        }
+
+        /* Contenedor inferior (Sidebar + Contenido) */
+        .main-wrapper {
+            display: flex;
+            flex: 1;
+            gap: 20px;
+            overflow: hidden;
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            width: var(--sidebar-mini);
+            display: flex;
+            flex-direction: column;
+            padding: 20px 12px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+     
+        .sidebar.mini{
+            width: 256px;
+        }
+
+        .sidebar.mini .nav-item {
+        justify-content: flex-start; 
+        padding-left: 18px; 
+        gap: 15px; 
+        }
+
+        .sidebar:not(.mini) .nav-item span{
+            display: none;
+        }
+
+        .sidebar:not(.mini) .nav-item{
+            padding: 12px 0;
+           
+        }
+
+        nav {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center; 
+        }
+        
+      .nav-item {
+            display: flex;
+            align-items: center;
+            justify-content: center; 
+            width: 100%; 
+            padding: 12px;
+            border-radius: 15px;
+            text-decoration: none;
+            color: var(--text-main);
+            transition: 0.3s ease;
+            gap: 0%;
+        }
+
+        .nav-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            color: var(--accent);
+            
+        }
+
+        /* BOTÓN TOGGLE */
+        .toggle-btn {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            border-radius: 10px;
+            transition: 0.2s;
+        }
+        
+        .toggle-btn:hover { 
+            background: rgba(255, 255, 255, 0.2); 
+        }
+
+        /* CONTENIDO PRINCIPAL */
+        .content-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            overflow-y: auto;
+        }
+
+        .search-box {
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: inset 3px 3px 6px var(--shadow-dark), inset -3px -3px 6px var(--shadow-light);
+            padding: 8px 15px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            width: 300px;
+        }
+        .search-box input {
+            background: transparent;
+            border: none; outline: none;
+            margin-left: 10px; color: var(--text-main);
+            width: 100%;
+        }
+
+        .dashboard-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; }
+        .main-card { padding: 30px; }
+        .stat-card { padding: 25px; text-align: center; }
+
+        .circle-stat {
+            width: 80px; height: 80px; border-radius: 50%;
+            display: inline-flex; align-items: center; justify-content: center;
+            box-shadow: inset 5px 5px 10px var(--shadow-dark), inset -5px -5px 10px var(--shadow-light);
+            margin-bottom: 10px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- TOPBAR SUPERIOR (Ocupa todo el ancho) -->
+    <header class="topbar card-hybrid">
+        <div style="display: flex; gap: 15px; align-items: center;">
+            <button class="toggle-btn" onclick="toggleSidebar()">
+                <i data-lucide="menu"></i>
+            </button>
+            <div style="font-weight: bold; font-size: 1.2rem; display: flex; align-items: center; gap: 8px;">
+                <i data-lucide="droplet" size="20"></i> PureAdmin
+            </div>
+        </div>
+
+        <div class="search-box">
+            <i data-lucide="search" size="16"></i>
+            <input type="text" placeholder="Buscar algo...">
+        </div>
+
+        <div style="display: flex; gap: 15px; align-items: center;">
+            <span>Usuario Pro</span>
+            <div class="circle-stat" style="width: 40px; height: 40px; margin: 0;">
+                <i data-lucide="user" size="18"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- CONTENEDOR DE CUERPO (Sidebar + Contenido) -->
+    <div class="main-wrapper">
+        
+        <!-- SIDEBAR -->
+        <aside class="sidebar mini card-hybrid" id="sidebar">
+            <nav>
+                <a href="#" class="nav-item"><i data-lucide="home"></i><span>Dashboard</span></a>
+                <a href="#" class="nav-item"><i data-lucide="bar-chart-2"></i><span> Analíticas</span></a>
+                <a href="#" class="nav-item"><i data-lucide="mail"></i><span>Mensajes</span></a>
+                <a href="#" class="nav-item"><i data-lucide="bell"></i><span>Notificaciones</span></a>
+                <a href="#" class="nav-item"><i data-lucide="settings"></i> <span>Ajustes</span></a>
+            </nav>
+        </aside>
+
+        <!-- ÁREA DE CONTENIDO -->
+        <main class="content-area">
+            <div class="dashboard-grid">
+                <section class="main-card card-hybrid">
+                    <h1 style="margin-bottom: 15px;">Topbar Global</h1>
+                    <p>Ahora el <strong>Header</strong> está fuera del flujo del sidebar, ocupando el 100% del ancho superior. Esto da una sensación de aplicación profesional más estructurada.</p>
+                </section>
+
+                <section class="stat-card card-hybrid">
+                    <div class="circle-stat">
+                        <i data-lucide="activity" color="#4a90e2"></i>
+                    </div>
+                    <h3>Estado</h3>
+                    <p style="color: #2ecc71; font-weight: bold;">En línea</p>
+                </section>
+            </div>
+            
+            <section class="main-card card-hybrid" style="flex: 1;">
+                <h2>Información adicional</h2>
+                <p>Al ocultar el sidebar, el área de contenido se expandirá automáticamente para llenar el espacio vacío manteniendo el Topbar intacto.</p>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('mini');
+        }
+    </script>
+</body>
+</html>
